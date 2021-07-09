@@ -23,6 +23,8 @@ public class ScoreArea : MonoBehaviour
             if (otherCollider.GetComponent<Ball>() != null)
             {
                 effectObject.SetActive(true);
+
+                ScoreCounter.scoreValue += 1;
             }
         }
     }
@@ -34,7 +36,6 @@ public class ScoreArea : MonoBehaviour
         Debug.Log(collision.GetContact(0));
 
         Debug.Log(collision.GetContact(0).normal);
-
 
     }
 
