@@ -7,9 +7,9 @@ using UnityEngine.Windows.Speech;
 
 public class VoiceRecognition : MonoBehaviour 
 {
-
     private KeywordRecognizer keywordRecognizer;
     private Dictionary<string, Action> move = new Dictionary<string, Action>();
+    public PlayerController m_PlayerController;
 
     private void Start()
     {
@@ -31,12 +31,14 @@ public class VoiceRecognition : MonoBehaviour
 
     private void Forward()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime);
+        Vector2 input = new Vector2(0, 1);
+        m_PlayerController.move(input);
     }
 
     private void Back()
     {
-        transform.Translate(-10f, 0f, 0f);
+        Vector2 input = new Vector2(0, -1);
+        m_PlayerController.move(input);
     }
 
     private void Up()
