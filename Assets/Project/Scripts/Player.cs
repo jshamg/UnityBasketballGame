@@ -19,10 +19,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         ball.GetComponent<Rigidbody>().useGravity = false;
-        if (!firstStart)
-        {
-            transform.position = new Vector3((-5 + 10 * Random.value), 0, (-8 + 11 * Random.value));
-        }
+        transform.position = new Vector3((-5 + 10 * Random.value), 0, (-8 + 11 * Random.value));
     }
 
     // Update is called once per frame
