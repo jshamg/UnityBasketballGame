@@ -10,8 +10,10 @@ public class GameController : MonoBehaviour
 
     public float resetTimer = 5f;
 
-    // Start is called before the first frame update
-    void Start()
+    public int scoreValue;
+
+// Start is called before the first frame update
+void Start()
     {
     }
 
@@ -25,6 +27,11 @@ public class GameController : MonoBehaviour
             {
                 SceneManager.LoadScene("Game");
             }
+        }
+
+        if (ScoreCounter.scoreValue == 3)
+        {
+            SceneManager.LoadScene("GameOver");
         }
     }
 }
