@@ -15,14 +15,13 @@ public class GameOverScreen : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
 
-        pointsText.text = "Your time: " + Timer.niceTime;
+        pointsText.text = "YOUR TIME: " + Timer.niceTime;
     }
 
     public void RestartButton()
     {
         Timer.timer = 0;
         ScoreCounter.scoreValue = 0;
-        Cursor.lockState = CursorLockMode.Locked;
         SceneManager.LoadScene("Game");
     }
 
