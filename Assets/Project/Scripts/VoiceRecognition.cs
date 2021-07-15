@@ -9,7 +9,11 @@ public class VoiceRecognition : MonoBehaviour
 {
     private KeywordRecognizer keywordRecognizer;
     private Dictionary<string, Action> move = new Dictionary<string, Action>();
+    public float rotationSensitivity;
     public PlayerController m_PlayerController;
+    public Camera m_Cam;
+    private Quaternion m_CharacterTargetRot;
+    private Quaternion m_CameraTargetRot;
 
     private void Start()
     {
@@ -21,6 +25,9 @@ public class VoiceRecognition : MonoBehaviour
         keywordRecognizer = new KeywordRecognizer(move.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += RecognizedSpeech;
         keywordRecognizer.Start();
+
+        m_CharacterTargetRot = m_PlayerController.transform.localRotation;
+        m_CameraTargetRot = m_Cam.transform.localRotation;
     }
 
     private void RecognizedSpeech(PhraseRecognizedEventArgs speech)
@@ -43,12 +50,20 @@ public class VoiceRecognition : MonoBehaviour
 
     private void Up()
     {
-        transform.Translate(0f, 10f, 0f);
+        m_CharacterTargetRot *= Quaternion.Euler(0f, 0f, 0f);
+        m_CameraTargetRot *= Quaternion.Euler(-(rotationSensitivity), 0f, 0f);
+
+        m_PlayerController.transform.localRotation = m_CharacterTargetRot;
+        m_Cam.transform.localRotation = m_CameraTargetRot;
     }
 
     private void Down()
     {
-        transform.Translate(0f, -10f, 0f);
+        m_CharacterTargetRot *= Quaternion.Euler(0f, 0f, 0f);
+        m_CameraTargetRot *= Quaternion.Euler(rotationSensitivity, 0f, 0f);
+
+        m_PlayerController.transform.localRotation = m_CharacterTargetRot;
+        m_Cam.transform.localRotation = m_CameraTargetRot;
     }
 
 }
