@@ -20,13 +20,16 @@ public class VoiceRecognition : MonoBehaviour
     {
         if (move.Count == 0)
         {
-            move.Add("forward", Forward);
-            move.Add("up", Up);
-            move.Add("down", Down);
-            move.Add("back", Back);
-            move.Add("left", Left);
-            move.Add("right", Right);
+            move.Add("go forward", Forward);
+            move.Add("look up", Up);
+            move.Add("look down", Down);
+            move.Add("go back", Back);
+            move.Add("look left", Left);
+            move.Add("look right", Right);
             move.Add("throw", Throw);
+            move.Add("go left", WalkLeft);
+            move.Add("go right", WalkRight);
+            move.Add("switch", Switch);
         }
 
         keywordRecognizer = new KeywordRecognizer(move.Keys.ToArray());
@@ -44,15 +47,38 @@ public class VoiceRecognition : MonoBehaviour
         move[speech.text].Invoke();
     }
 
+    private void Switch()
+    {
+        if (m_PlayerController.m_UseVoiceToRotate)
+        {
+            m_PlayerController.m_UseVoiceToRotate = false;
+        } else
+        {
+            m_PlayerController.m_UseVoiceToRotate = true;
+        }
+    }
+
+    private void WalkLeft()
+    {
+        Vector2 input = new Vector2(-1, 0);
+        m_PlayerController.move(input);
+    }
+
+    private void WalkRight()
+    {
+        Vector2 input = new Vector2(1, 0);
+        m_PlayerController.move(input);
+    }
+
     private void Forward()
     {
-        Vector2 input = new Vector2(0, 1);
+        Vector2 input = new Vector2(0, 2);
         m_PlayerController.move(input);
     }
 
     private void Back()
     {
-        Vector2 input = new Vector2(0, -1);
+        Vector2 input = new Vector2(0, -2);
         m_PlayerController.move(input);
     }
 

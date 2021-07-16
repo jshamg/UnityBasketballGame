@@ -9,7 +9,7 @@ using UnityStandardAssets.Characters.FirstPerson;
     [RequireComponent(typeof(AudioSource))]
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private bool m_UseVoiceToRotate;
+        [SerializeField] public bool m_UseVoiceToRotate;
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
