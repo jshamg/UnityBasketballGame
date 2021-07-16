@@ -29,14 +29,18 @@ public class Player : MonoBehaviour
 
             if (Input.GetMouseButton(0))
             {
-                holdingBall = false;
-                ball.ActivateTrail();
-                ball.GetComponent<Rigidbody>().useGravity = true;
-                ball.GetComponent<Rigidbody>().AddForce(playerCamera.transform.forward * ballThrowingForce);
-             
+                Throw();
             }
 
         }
+    }
+
+    public void Throw()
+    {
+        holdingBall = false;
+        ball.ActivateTrail();
+        ball.GetComponent<Rigidbody>().useGravity = true;
+        ball.GetComponent<Rigidbody>().AddForce(playerCamera.transform.forward * ballThrowingForce);
     }
        
 }

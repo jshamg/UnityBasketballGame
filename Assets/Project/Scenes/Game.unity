@@ -5280,7 +5280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSensitivity: 5
   m_PlayerController: {fileID: 347720866}
-  m_Cam: {fileID: 559533614}
+  m_Player: {fileID: 347720868}
 --- !u!114 &347720866 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8712706048087305534, guid: 5e9e851c0e142814dac026a256ba2ac0,
@@ -5529,12 +5529,6 @@ Transform:
 --- !u!1 &559533611 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: 5e9e851c0e142814dac026a256ba2ac0,
-    type: 3}
-  m_PrefabInstance: {fileID: 949311292}
-  m_PrefabAsset: {fileID: 0}
---- !u!20 &559533614 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0,
     type: 3}
   m_PrefabInstance: {fileID: 949311292}
   m_PrefabAsset: {fileID: 0}
