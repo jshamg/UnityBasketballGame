@@ -18,13 +18,16 @@ public class VoiceRecognition : MonoBehaviour
 
     private void Start()
     {
-        move.Add("forward", Forward);
-        move.Add("up", Up);
-        move.Add ("down", Down);
-        move.Add("back", Back);
-        move.Add("left", Left);
-        move.Add("right", Right);
-        move.Add("throw", Throw);
+        if (move.Count == 0)
+        {
+            move.Add("forward", Forward);
+            move.Add("up", Up);
+            move.Add("down", Down);
+            move.Add("back", Back);
+            move.Add("left", Left);
+            move.Add("right", Right);
+            move.Add("throw", Throw);
+        }
 
         keywordRecognizer = new KeywordRecognizer(move.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += RecognizedSpeech;
